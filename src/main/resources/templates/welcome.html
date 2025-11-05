@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chào mừng bạn đến với Ngân hàng Phegon</title>
+    <meta charset="UTF-8">
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6; /* Màu nền xám nhạt cho toàn bộ email */
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 580px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 10px; /* Bo góc mềm mại hơn */
+            padding: 40px; /* Tăng khoảng cách bên trong */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Đổ bóng nhẹ, hiện đại */
+            text-align: center;
+            border: 1px solid #e9ecef; /* Thêm viền mỏng */
+        }
+        h2 {
+            color: #004a99; /* Màu xanh đậm chuyên nghiệp */
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6; /* Giãn dòng dễ đọc */
+            margin-bottom: 20px;
+        }
+        /* Định dạng riêng cho các tag <b> hoặc <strong> */
+        b, strong {
+            color: #004a99; /* Đồng bộ màu nhấn mạnh */
+            font-weight: 600;
+        }
+
+        /* Nút Kêu gọi hành động (Call to Action) */
+        .cta-button {
+            display: inline-block;
+            background-color: #0056b3; /* Màu nút nổi bật */
+            color: #ffffff; /* Chữ trắng */
+            padding: 13px 30px;
+            text-decoration: none; /* Bỏ gạch chân của link */
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 15px; /* Khoảng cách với nội dung bên trên */
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #888;
+            border-top: 1px solid #eeeeee; /* Đường kẻ phân cách footer */
+            padding-top: 25px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h2>Chào mừng, <span th:text="${name}">Quý khách</span>!</h2>
+
+    <p>Chúng tôi rất vui mừng được chào đón bạn đến với <b>Ngân hàng Tâm Đức</b>.</p>
+
+    <p>Hãy bắt đầu trải nghiệm các dịch vụ gửi tiền, rút tiền, chuyển khoản và sao kê hàng tháng một cách liền mạch.</p>
+
+    <p style="margin-bottom: 25px;">Hành trình tài chính của bạn bắt đầu từ đây.</p>
+
+    <a href="#" class="cta-button">Đăng nhập ngay</a>
+
+    <div class="footer">
+        © 2025 Ngân hàng Tâm Đức | Người bạn đồng hành tin cậy
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tài khoản Ngân hàng Mới của Bạn</title>
+    <meta charset="UTF-8">
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 580px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: left; /* Căn trái cho email thông tin */
+            border: 1px solid #e9ecef;
+        }
+        h2 {
+            color: #004a99;
+            font-size: 26px;
+            margin-bottom: 20px;
+            text-align: center; /* Tiêu đề vẫn căn giữa */
+        }
+        p {
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        b, strong {
+            color: #004a99;
+            font-weight: 600;
+        }
+
+        /* Phần quan trọng: Định dạng danh sách chi tiết tài khoản
+        */
+        .account-details {
+            list-style: none; /* Bỏ dấu chấm đầu dòng */
+            padding: 0;
+            margin: 25px 0;
+            border: 1px solid #e0e0e0; /* Viền cho cả khối thông tin */
+            border-radius: 8px;
+            overflow: hidden; /* Để bo góc cho li đầu và cuối */
+        }
+
+        .account-details li {
+            display: flex; /* Sử dụng Flexbox để căn chỉnh */
+            justify-content: space-between; /* Đẩy label và value ra 2 bên */
+            align-items: center;
+            padding: 15px 20px;
+            font-size: 15px;
+
+            /* Tạo đường kẻ ngăn cách giữa các mục */
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        /* Bỏ đường kẻ cho mục cuối cùng */
+        .account-details li:last-child {
+            border-bottom: none;
+        }
+
+        /* Màu nền xen kẽ (Zebra-striping) cho dễ đọc */
+        .account-details li:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Phần giá trị (bên phải) */
+        .account-details li b {
+            font-size: 16px;
+            color: #111; /* Giá trị màu đen cho rõ */
+            font-weight: 600;
+        }
+
+        /* Nút Kêu gọi hành động (Call to Action) */
+        .cta-button {
+            display: inline-block;
+            background-color: #0056b3;
+            color: #ffffff;
+            padding: 13px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        /* Căn giữa cho khối nút */
+        .cta-block {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #888;
+            border-top: 1px solid #eeeeee;
+            padding-top: 25px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h2>Tạo tài khoản thành công! ✅</h2>
+
+    <p>Xin chào, <strong th:text="${name}">Quý khách</strong>,</p>
+
+    <p>Tài khoản <strong th:text="${accountType}"></strong> của bạn đã được tạo thành công. 🥳</p>
+
+    <p style="margin-bottom: 15px;"><strong>Thông tin chi tiết tài khoản:</strong></p>
+
+    <ul class="account-details">
+        <li>
+            <span>Số tài khoản:</span>
+            <b th:text="${accountNumber}">[Số tài khoản]</b>
+        </li>
+        <li>
+            <span>Loại tài khoản:</span>
+            <b th:text="${accountType}">[Loại tài khoản]</b>
+        </li>
+        <li>
+            <span>Loại tiền tệ:</span>
+            <b th:text="${currency}">[Loại tiền tệ]</b>
+        </li>
+    </ul>
+
+    <p>Bây giờ bạn có thể đăng nhập và bắt đầu sử dụng tài khoản của mình ngay lập tức.</p>
+
+    <div class="cta-block">
+        <a href="#" class="cta-button">Đi đến trang Đăng nhập</a>
+    </div>
+
+    <div class="footer">
+        © 2025 Ngân hàng Tâm Đức | Người bạn đồng hành tin cậy
+    </div>
+
+</div>
+</body>
+</html>
