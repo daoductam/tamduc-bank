@@ -13,9 +13,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
 @EnableAsync
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class TamducbankApplication {
-	private final NotificationService notificationService;
+//	private final NotificationService notificationService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TamducbankApplication.class, args);
