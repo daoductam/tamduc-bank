@@ -5,6 +5,7 @@ import com.tamduc.tamducbank.auth_users.dtos.UserDTO;
 import com.tamduc.tamducbank.auth_users.entity.User;
 import com.tamduc.tamducbank.auth_users.repository.UserRepository;
 import com.tamduc.tamducbank.auth_users.service.UserService;
+import com.tamduc.tamducbank.aws.S3Service;
 import com.tamduc.tamducbank.exceptions.BadRequestException;
 import com.tamduc.tamducbank.exceptions.NotFoundException;
 import com.tamduc.tamducbank.notification.dtos.NotificationDTO;
@@ -40,8 +41,11 @@ public class UserServiceImpl implements UserService {
     private  final NotificationService notificationService;
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
+    private final S3Service s3Service;
 
-    private final String uploadDir = "uploads/profile-pictures/";
+//    private final String uploadDir = "uploads/profile-pictures/";
+
+    private final String uploadDir = "d/phegon-bank-react/public/profile-picture/";
 
 
     @Override
@@ -103,7 +107,7 @@ public class UserServiceImpl implements UserService {
 
         //send welcome email
         Map<String, Object> templateVariables = new HashMap<>();
-        templateVariables.put("name", user.getFirsName());
+        templateVariables.put("name", user.getFirstName());
 
         NotificationDTO notificationDTO = NotificationDTO.builder()
                 .recipient(user.getEmail())
@@ -149,7 +153,8 @@ public class UserServiceImpl implements UserService {
 
             Files.copy(file.getInputStream(), filePath);
 
-            String fileUrl = uploadDir + newFileName;
+            String fileUrl = "profile-picture/"+newFileName;
+//            String fileUrl = uploadDir + newFileName;
 
             user.setProfilePictureUrl(fileUrl);
             userRepository.save(user);
@@ -157,8 +162,32 @@ public class UserServiceImpl implements UserService {
             return Response.builder()
                     .statusCode(HttpStatus.OK.value())
                     .message("Profile picture uploaded successfully.")
+                    .data(file)
                     .build();
         } catch (IOException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
+    public Response<?> uploadProfilePictureToS3(MultipartFile file) {
+        User user = getCurrentLoggedInUser();
+
+        try {
+            if (user.getProfilePictureUrl() != null && !user.getProfilePictureUrl().isEmpty()) {
+                s3Service.deleteFile(user.getProfilePictureUrl());
+            }
+            String s3Url = s3Service.uploadFile(file, "profile-pictures");
+
+            user.setProfilePictureUrl(s3Url);
+            userRepository.save(user);
+
+            return Response.builder()
+                    .statusCode(HttpStatus.OK.value())
+                    .message("Profile Picture uploaded successfully")
+                    .data(s3Url)
+                    .build();
+        }catch (IOException e) {
             throw new RuntimeException(e.getMessage());
         }
     }

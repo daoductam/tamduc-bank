@@ -125,7 +125,7 @@ public class TransactionServiceImpl implements TransactionService{
         String template;
 
         Map<String, Object> templateVariables = new HashMap<>();
-        templateVariables.put("name", user.getFirsName());
+        templateVariables.put("name", user.getFirstName());
         templateVariables.put("amount", tnx.getAmount());
         templateVariables.put("accountNumber", tnx.getAccount().getAccountNumber());
         templateVariables.put("date", tnx.getTransactionDate());
@@ -174,7 +174,7 @@ public class TransactionServiceImpl implements TransactionService{
 
             User reciever = destination.getUser();
             Map<String, Object> recvVars = new HashMap<>();
-            recvVars.put("name", reciever.getFirsName());
+            recvVars.put("name", reciever.getFirstName());
             recvVars.put("amount", tnx.getAmount());
             recvVars.put("accountNumber", destination.getAccountNumber());
             recvVars.put("date", tnx.getTransactionDate());
@@ -211,7 +211,7 @@ public class TransactionServiceImpl implements TransactionService{
 
         Pageable pageable = PageRequest.of(page, size, Sort.by("transactionDate").descending());
         Page<Transaction> txns = transactionRepository.findByAccount_AccountNumber(accountNumber, pageable);
-
+//        Page<Transaction> txns = transactionRepository.findAllTransactionsForAccount(accountNumber, pageable);
         List<TransactionDTO> transactionDTOS = txns.getContent().stream()
                 .map(transaction -> modelMapper.map(transaction, TransactionDTO.class))
                 .toList();

@@ -55,6 +55,7 @@ public class AuthServiceImpl implements AuthService {
     private String resetLink;
 
     @Override
+    @Transactional
     public Response<String> register(RegistrationRequest request) {
         List<Role> roles;
 
@@ -76,7 +77,7 @@ public class AuthServiceImpl implements AuthService {
         }
 
         User user = User.builder()
-                .firsName(request.getFirstName())
+                .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .email(request.getEmail())
                 .phoneNumber(request.getPhoneNumber())
@@ -92,7 +93,7 @@ public class AuthServiceImpl implements AuthService {
 
         //send welcome email
         Map<String, Object> vars = new HashMap<>();
-        vars.put("name", savedUser.getFirsName());
+        vars.put("name", savedUser.getFirstName());
 
         NotificationDTO notificationDTO = NotificationDTO.builder()
                 .recipient(savedUser.getEmail())
@@ -106,7 +107,7 @@ public class AuthServiceImpl implements AuthService {
 
         //send account creation/detail email
         Map<String, Object> accountVars = new HashMap<>();
-        accountVars.put("name", savedUser.getFirsName());
+        accountVars.put("name", savedUser.getFirstName());
         accountVars.put("accountNumber", savedAccount.getAccountNumber());
         accountVars.put("accountType", AccountType.SAVINGS.name());
         accountVars.put("currency", Currency.VND);
@@ -173,7 +174,7 @@ public class AuthServiceImpl implements AuthService {
 
         //send email reset link out
         Map<String, Object> templateVariables = new HashMap<>();
-        templateVariables.put("name",user.getFirsName());
+        templateVariables.put("name",user.getFirstName());
         templateVariables.put("resetLink", resetLink + code);
 
         NotificationDTO notificationDTO = NotificationDTO.builder()
@@ -223,7 +224,7 @@ public class AuthServiceImpl implements AuthService {
 
         //send confirmation email
         Map<String, Object> templateVariables = new HashMap<>();
-        templateVariables.put("name",user.getFirsName());
+        templateVariables.put("name",user.getFirstName());
 
         NotificationDTO confirmationEmail = NotificationDTO.builder()
                 .recipient(user.getEmail())
