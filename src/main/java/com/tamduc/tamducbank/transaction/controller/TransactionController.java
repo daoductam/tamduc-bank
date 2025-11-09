@@ -3,7 +3,6 @@ package com.tamduc.tamducbank.transaction.controller;
 import com.tamduc.tamducbank.res.Response;
 import com.tamduc.tamducbank.transaction.dtos.TransactionRequest;
 import com.tamduc.tamducbank.transaction.service.TransactionService;
-import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

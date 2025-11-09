@@ -1,6 +1,5 @@
 package com.tamduc.tamducbank.auth_users.dtos;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 

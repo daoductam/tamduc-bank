@@ -1,11 +1,8 @@
 package com.tamduc.tamducbank.auth_users.dtos;
 
-import com.tamduc.tamducbank.role.entity.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 public class LoginRequest {

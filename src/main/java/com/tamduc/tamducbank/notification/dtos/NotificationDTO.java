@@ -2,9 +2,7 @@ package com.tamduc.tamducbank.notification.dtos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.tamduc.tamducbank.auth_users.entity.User;
 import com.tamduc.tamducbank.enums.NotificationType;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
