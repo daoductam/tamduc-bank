@@ -3,7 +3,7 @@ name: Deploy To EC2
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   deploy:
     runs-on: ubuntu-latest
