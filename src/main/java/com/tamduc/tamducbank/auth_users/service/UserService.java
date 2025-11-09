@@ -4,7 +4,6 @@ import com.tamduc.tamducbank.auth_users.dtos.UpdatePasswordRequest;
 import com.tamduc.tamducbank.auth_users.dtos.UserDTO;
 import com.tamduc.tamducbank.auth_users.entity.User;
 import com.tamduc.tamducbank.res.Response;
-import jakarta.mail.Multipart;
 import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,16 +1,13 @@
 package com.tamduc.tamducbank.account.controller;
 
 import com.tamduc.tamducbank.account.service.AccountService;
-import com.tamduc.tamducbank.auth_users.dtos.UpdatePasswordRequest;
-import com.tamduc.tamducbank.auth_users.dtos.UserDTO;
-import com.tamduc.tamducbank.auth_users.service.UserService;
 import com.tamduc.tamducbank.res.Response;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController

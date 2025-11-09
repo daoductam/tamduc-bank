@@ -4,7 +4,6 @@ import com.tamduc.tamducbank.account.dtos.AccountDTO;
 import com.tamduc.tamducbank.account.entity.Account;
 import com.tamduc.tamducbank.account.repository.AccountRepository;
 import com.tamduc.tamducbank.auth_users.entity.User;
-import com.tamduc.tamducbank.auth_users.repository.UserRepository;
 import com.tamduc.tamducbank.auth_users.service.UserService;
 import com.tamduc.tamducbank.enums.AccountStatus;
 import com.tamduc.tamducbank.enums.AccountType;

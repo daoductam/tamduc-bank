@@ -1,7 +1,7 @@
 package com.tamduc.tamducbank.auth_users.controller;
 
-import com.tamduc.tamducbank.auth_users.dtos.*;
-import com.tamduc.tamducbank.auth_users.service.AuthService;
+import com.tamduc.tamducbank.auth_users.dtos.UpdatePasswordRequest;
+import com.tamduc.tamducbank.auth_users.dtos.UserDTO;
 import com.tamduc.tamducbank.auth_users.service.UserService;
 import com.tamduc.tamducbank.res.Response;
 import jakarta.validation.Valid;

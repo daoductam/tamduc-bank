@@ -1,6 +1,5 @@
 package com.tamduc.tamducbank.transaction.repository;
 
-import com.tamduc.tamducbank.account.entity.Account;
 import com.tamduc.tamducbank.transaction.entity.Transaction;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
