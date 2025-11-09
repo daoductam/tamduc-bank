@@ -8,16 +8,20 @@ WORKDIR /app
 #update package lissts ans install Maven without recommends packages to keep the layer small
 RUN apt-get update && apt-get install -y --no-install-recommends maven && rm -rf /var/lib/apt/lists/*
 
-COPY pom.xml ./pom.xml
+#copy the project object model POM files from the host to the container s workdir /app
+COPY pom.xml .
 
+# downlload project dependency
 RUN mvn dependency:go-offline -B
 
+# copy the application source code
 COPY src ./src
 
+#Package the spring bootapplication into a jar file
 RUN mvn clean package -Dmaven.test.skip=true
 
 #stage 2 is to build aproduction ready image
-
+# setup the runtiem env
 FROM eclipse-temurin:21-jre-jammy
 
 WORKDIR /app
